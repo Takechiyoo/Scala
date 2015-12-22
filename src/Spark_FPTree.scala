@@ -3,6 +3,7 @@
   */
 object Spark_FPTree {
   def main(args: Array[String]) {
+    val s = "hello"
     println("hello world")
   }
 }
