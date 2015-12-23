@@ -111,8 +111,18 @@ class FPTree[T] extends serializable{
       }
     }
   }
-}
 
+  /** Traverse the tree. */
+  private def traverse(node: Node[T]): Unit = {
+    node.children.foreach { case (item, child) =>
+      println(item)
+      traverse(child)
+    }
+  }
+
+  def show(): Unit = traverse(root)
+
+}
 
 object Spark_FPTree {
   def main(args: Array[String]) {
@@ -121,7 +131,12 @@ object Spark_FPTree {
     val t2 = List('b', 'c', 'f')
     tree.add(t1.iterator, 2)
     tree.add(t2.iterator, 3)
-    println(tree.root.children)
+    tree.show()
+    tree.transactions.foreach { case (t, c) =>
+      println(t)
+    }
+    println(tree.root.count)
     println("hello world")
+    System.out.println("hello world!")
   }
 }
